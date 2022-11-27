@@ -1,0 +1,65 @@
+version: "3.1"
+
+stories:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: happy path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_deadline
+  - action: utter_deadline
+  - intent: ask_contact_person
+  - action: utter_contact_person
+
+- story: Name Test
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: inform_name
+      entities:
+      - name: till
+    - action: utter_greet_name
+
+- story: Mail Test
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: inform_email
+      entities:
+      - email: user@web.de
+    - action: utter_happy
+
+- story: form-test
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: start_event
+    - action: event_form
+    - active_loop: event_form
+    - action: utter_event
