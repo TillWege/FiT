@@ -60,6 +60,7 @@ public class cursor : MonoBehaviour
 
     public void ToggleCursor()
     {
-        this.useCursor = !this.useCursor;
+        useCursor = !useCursor;
+        cursorChildObject.SetActive(useCursor);
     }
 }
